@@ -9,7 +9,7 @@
         "@schematics/angular:application": {
           "strict": true,
           "inlineStyle": true,
-          "inlineTemplate": true,
+          "inlineTemplate": true
         }
       },
       "root": "",
