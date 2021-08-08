@@ -2,7 +2,9 @@
   "singleQuote": true,
   "arrow-body-style": "off",
   "prefer-arrow-callback": "off",
-  "printWidth": 120, // optional
+  "printWidth": 120,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
   "overrides": [
     {
       "files": "*.html",
