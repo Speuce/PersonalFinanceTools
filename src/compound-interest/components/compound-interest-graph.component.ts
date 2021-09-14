@@ -32,7 +32,10 @@ export class CompoundInterestGraphComponent implements OnInit {
     },
     tooltip: {
       trigger: 'axis',
-      formatter: (params: any) => `${params[0].name}</br>`.concat(params.map((param: any) => `${param.seriesName}: $${param.value}</br>`)),
+      formatter: (params: any) =>
+        `${params[0].name}</br>`.concat(
+          params.map((param: any) => `${param.seriesName}: $${param.value}</br>`)
+        ),
       axisPointer: {
         type: 'cross',
         label: {

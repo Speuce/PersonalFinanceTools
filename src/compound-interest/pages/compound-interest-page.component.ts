@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-compound-interest-page',
-  template: ` <p>compound-interest-page works!</p> `,
+  template: `
+ <p>compound-interest-page works!</p>
+ <app-year-selector></app-year-selector>
+  `,
 
   styles: [],
 })
