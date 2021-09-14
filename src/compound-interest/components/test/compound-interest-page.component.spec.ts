@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompoundInterestPageComponent } from '../../compound-interest-page.component';
+import { CompoundInterestPageComponent } from '../../pages/compound-interest-page.component';
 
 describe('CompoundInterestPageComponent', () => {
   let component: CompoundInterestPageComponent;
