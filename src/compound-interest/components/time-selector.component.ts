@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       <div style="display: flex; justify-content: center;">
         <div style="display: inline-block">
           <mat-form-field
-            class="myForm mat-form-field-no-padding"
+            class="myForm"
             appearance="outline"
             color="accent"
             floatLabel="never"
