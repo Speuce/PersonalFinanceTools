@@ -2,7 +2,7 @@
   "singleQuote": true,
   "arrow-body-style": "on",
   "prefer-arrow-callback": "off",
-  "printWidth": 150,
+  "printWidth": 100,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "overrides": [
