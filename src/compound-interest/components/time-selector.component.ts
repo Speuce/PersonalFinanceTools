@@ -4,66 +4,91 @@ import { Component } from '@angular/core';
   selector: 'app-year-selector',
   template: `
     <mat-card>
-      <p>year-selector works!</p>
+      <div style="display: flex; justify-content: center;">
+        <div style="display: inline-block">
+          <mat-form-field
+            class="myForm mat-form-field-no-padding"
+            appearance="outline"
+            color="accent"
+            floatLabel="never"
+            style="margin: auto 0 0 auto"
+          >
+            <input matInput type="number" [(ngModel)]="value" />
+          </mat-form-field>
+          <h1>Years</h1>
+        </div>
+      </div>
       <mat-slider
         thumbLabel
         min="1"
         max="100"
-        [(value)]="value"
+        [value]="computeSliderValue(value)"
+        (input)="updateValue($event.value)"
         step="0.0001"
         [displayWith]="computeRoundedExponentialValue"
       ></mat-slider>
-      <h1>
-        {{ computeRoundedExponentialValue(value) }}
-      </h1>
-      <mat-form-field class="example-form-field" appearance="fill">
-        <mat-label>Clearable input</mat-label>
-        <input
-          matInput
-          type="text"
-          [ngModel]="computeRoundedExponentialValue(value)"
-          (change)="updateValue(getValue($event))"
-        />
-      </mat-form-field>
-      <!--      <mat-label>Clearable input</mat-label>-->
-      <!--      <input matInput [(ngModel)]="value" type="number" />-->
     </mat-card>
   `,
   styles: [
     `
+      h1 {
+        text-align: center;
+        display: inline;
+        margin-left: 30px;
+      }
+
       mat-slider {
         width: 300px;
       }
       mat-card {
         max-width: 350px;
       }
+      .myForm {
+        font-size: 25px;
+        max-width: 125px;
+      }
+      /deep/ .myForm .mat-form-field-infix {
+        padding: 0 0 0.5em 0;
+      }
+
+      /deep/ .myForm .mat-form-field-wrapper {
+        padding: 0;
+      }
     `,
   ],
 })
 export class TimeSelectorComponent {
-  value: number | null = 5;
+  value: number = 5;
 
   // constructor() {}
   //
   // ngOnInit(): void {}
 
-  // eslint-disable-next-line class-methods-use-this
-  getValue(event: Event): number | null {
-    return Number((event.target as HTMLInputElement).value);
+  getValue(): number {
+    return this.value;
   }
 
   // eslint-disable-next-line class-methods-use-this
   updateValue(val: number | null) {
-    if (val && val >= 5) {
-      this.value = -3000.0 / (val + 25) + 101;
+    if (val && val >= 1) {
+      this.value = this.computeRoundedExponentialValue(val);
     } else {
       this.value = 5;
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  computeSliderValue(val: number | null) {
+    if (val && val > 1) {
+      return -3000 / (val + 25.0) + 101;
+    }
+    return 1;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   computeRoundedExponentialValue(value: number | null) {
     if (value) {
-      return Math.floor(-3000 / (value - 101) - 25);
+      return Math.round(-3000 / (value - 101) - 25);
     }
     return 5;
   }
