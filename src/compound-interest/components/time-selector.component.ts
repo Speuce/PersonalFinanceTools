@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-year-selector',
   template: `
     <mat-card>
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: flex-start; margin-left: 1em">
         <div style="display: inline-block">
           <mat-form-field
             class="myForm"
