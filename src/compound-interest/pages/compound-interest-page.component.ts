@@ -3,8 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-compound-interest-page',
   template: `
- <p>compound-interest-page works!</p>
- <app-year-selector></app-year-selector>
+    <app-year-selector></app-year-selector>
+    <app-linear-slider-value
+      [min]="0.0"
+      [max]="100.0"
+      [step]="0.05"
+      suffix="%"
+      title="Interest Rate"
+      subtitle="Annual"
+    ></app-linear-slider-value>
   `,
 
   styles: [],
