@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-compound-interest-page',
   template: `
-    <div style="display: flex; flex-wrap: wrap; align-items: end">
+    <app-compound-interest-graph></app-compound-interest-graph>
+    <div style="display: flex; flex-wrap: wrap; align-items: stretch">
       <app-year-selector></app-year-selector>
       <app-linear-slider-value
         [min]="0.0"
@@ -13,7 +14,6 @@ import { Component, OnInit } from '@angular/core';
         suffix="%"
         title="Interest Rate"
         subtitle="Annual"
-        style="display: block; margin-top: 30px;"
       ></app-linear-slider-value>
       <app-linear-slider-value
         [min]="0.0"
@@ -23,7 +23,6 @@ import { Component, OnInit } from '@angular/core';
         softMax
         prefix="$"
         title="Principle"
-        style="display: block; margin-top: 30px;"
       ></app-linear-slider-value>
 
       <app-linear-slider-value
@@ -34,7 +33,6 @@ import { Component, OnInit } from '@angular/core';
         softMax
         prefix="$"
         title="Annual Addition"
-        style="display: block; margin-top: 30px;"
       ></app-linear-slider-value>
     </div>
   `,
