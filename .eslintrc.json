@@ -24,6 +24,7 @@
       "rules": {
         "import/prefer-default-export": "off",
         "implicit-arrow-linebreak": "off",
+        "object-curly-newline": "off",
         "@typescripe-eslint/implicit-arrow-linebreak": "off",
         "@typescript-eslint/quotes": ["error","single", {"allowTemplateLiterals": true}],
         "@angular-eslint/directive-selector": [
