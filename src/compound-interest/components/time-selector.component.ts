@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-year-selector',
   template: `
-    <mat-card style="margin: 0 5px 0 5px; height: 150px">
+    <mat-card style="margin: 5px; height: 150px">
       <div style="display: flex; justify-content: flex-start; margin-left: 1em">
         <div style="display: inline-block">
           <mat-form-field

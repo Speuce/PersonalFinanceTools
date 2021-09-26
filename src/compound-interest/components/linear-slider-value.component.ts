@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-linear-slider-value',
   template: `
-    <mat-card style="margin: 0 5px 0 5px; height: 150px">
+    <mat-card style="margin: 5px; height: 150px">
       <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
       <mat-card-subtitle *ngIf="subtitle">{{ subtitle }}</mat-card-subtitle>
       <div
