@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-linear-slider-value',
   template: `
-    <mat-card>
+    <mat-card style="margin: 0 5px 0 5px; height: 150px">
       <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
       <mat-card-subtitle *ngIf="subtitle">{{ subtitle }}</mat-card-subtitle>
       <div
@@ -50,6 +50,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
         margin: 0 0.5em 0 0.5em;
       }
 
+      mat-card-title {
+        font-size: 20px;
+      }
+
+      mat-card-subtitle {
+        margin-bottom: 8px;
+      }
+
       mat-slider {
         width: 300px;
       }
@@ -57,7 +65,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
         max-width: 350px;
       }
       .myForm {
-        font-size: 25px;
+        font-size: 20px;
       }
       /deep/ .myForm .mat-form-field-infix {
         padding: 0 0 0.5em 0;
@@ -69,11 +77,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     `,
   ],
 })
-export class LinearSliderValueComponent implements OnInit {
-  ngOnInit(): void {
-    console.log(`data: ${this.softMax} val: ${!!this.softMax}`);
-  }
-
+export class LinearSliderValueComponent {
   maxNum: number = Number.MAX_SAFE_INTEGER;
 
   @Input() min: number = 1;
