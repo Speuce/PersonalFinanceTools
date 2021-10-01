@@ -23,6 +23,10 @@
       "plugins": ["prettier"],
       "rules": {
         "import/prefer-default-export": "off",
+        "implicit-arrow-linebreak": "off",
+        "object-curly-newline": "off",
+        "@typescript-eslint/implicit-arrow-linebreak": "off",
+        "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/quotes": ["error","single", {"allowTemplateLiterals": true}],
         "@angular-eslint/directive-selector": [
           "error",
