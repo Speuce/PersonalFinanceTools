@@ -24,6 +24,7 @@
       "rules": {
         "import/prefer-default-export": "off",
         "implicit-arrow-linebreak": "off",
+        "no-underscore-dangle": ["warn",{"allowAfterThis":  true}],
         "object-curly-newline": "off",
         "@typescript-eslint/implicit-arrow-linebreak": "off",
         "@typescript-eslint/comma-dangle": "off",
