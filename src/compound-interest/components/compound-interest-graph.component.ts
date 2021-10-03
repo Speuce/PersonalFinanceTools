@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { EChartsOption } from 'echarts';
+import { EChartsOption, LineSeriesOption } from 'echarts';
+import { CalculatorService } from '../services/calculator.service';
+import { getSeriesObject } from '../helpers/graph-helpers';
 
 @Component({
   selector: 'app-compound-interest-graph',
-  template: ` <div echarts [options]="chartOption" class="demo-chart"></div> `,
+  template: `
+    <div echarts (chartInit)="onChartInit($event)" [options]="chartOption" class="demo-chart"></div>
+  `,
 
   styles: [
     `
@@ -15,18 +19,22 @@ import { EChartsOption } from 'echarts';
   ],
 })
 export class CompoundInterestGraphComponent implements OnInit {
-  myData: String = '';
+  myData: LineSeriesOption = getSeriesObject('s1', []);
+
+  chartInstance: any = null;
+
+  constructor(private calcService: CalculatorService) {}
 
   chartOption: EChartsOption = {
     color: ['#80FFA5', '#FFBF00'],
     xAxis: {
       type: 'category',
-      data: [],
+      data: ['1', '2', '3', '4', '5'],
     },
     yAxis: {
       type: 'value',
     },
-    series: [],
+    series: [this.myData],
     title: {
       text: 'chart',
     },
@@ -55,7 +63,20 @@ export class CompoundInterestGraphComponent implements OnInit {
     this.genData();
   }
 
+  onChartInit(e: any) {
+    this.chartInstance = e;
+  }
+
   genData() {
-    this.myData = '5';
+    this.calcService.dataChange.subscribe((data) => {
+      this.myData.data = data;
+      // @ts-ignore
+      if ('data' in this.chartOption.xAxis) {
+        this.chartOption.xAxis.data = [...data.keys()].map((val) => String(val));
+      }
+      if (this.chartInstance) {
+        this.chartInstance.setOption(this.chartOption);
+      }
+    });
   }
 }

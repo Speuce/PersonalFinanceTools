@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CalculatorService } from '../services/calculator.service';
 
 @Component({
   selector: 'app-year-selector',
@@ -13,7 +14,7 @@ import { Component } from '@angular/core';
             floatLabel="never"
             style="margin: auto 0 0 auto"
           >
-            <input matInput type="number" [(ngModel)]="value" />
+            <input matInput type="number" [ngModel]="value" (ngModelChange)="setValue($event)" />
           </mat-form-field>
           <h1>Years</h1>
         </div>
@@ -57,12 +58,14 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class TimeSelectorComponent {
+export class TimeSelectorComponent implements OnInit {
   value: number = 5;
 
-  // constructor() {}
-  //
-  // ngOnInit(): void {}
+  constructor(private calcService: CalculatorService) {}
+
+  ngOnInit(): void {
+    this.value = this.calcService.periods;
+  }
 
   getValue(): number {
     return this.value;
@@ -71,10 +74,15 @@ export class TimeSelectorComponent {
   // eslint-disable-next-line class-methods-use-this
   updateValue(val: number | null) {
     if (val && val >= 1) {
-      this.value = this.computeRoundedExponentialValue(val);
+      this.setValue(this.computeRoundedExponentialValue(val));
     } else {
-      this.value = 5;
+      this.setValue(5);
     }
+  }
+
+  setValue(val: number) {
+    this.value = val;
+    this.calcService.periods = val;
   }
 
   // eslint-disable-next-line class-methods-use-this

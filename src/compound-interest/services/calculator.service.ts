@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,19 +13,25 @@ export class CalculatorService {
 
   private _data: number[] = [];
 
+  dataChange: Subject<number[]> = new Subject();
+
   constructor() {
     this._principle = 0;
-    this._periods = 0;
-    this._rate = 0;
+    this._periods = 5;
+    this._rate = 0.05;
+    this.dataChange.subscribe((value) => {
+      this._data = value;
+    });
   }
 
   recalculate() {
-    this._data = Array(this._periods);
+    const newData = Array(this._periods);
     let balance = this._principle;
     for (let year = 0; year < this._periods; year += 1) {
-      this._data[year] = Number(balance.toFixed(2));
-      balance *= 1 + this._rate;
+      newData[year] = Number(balance.toFixed(2));
+      balance *= 1 + this._rate / 100.0;
     }
+    this.dataChange.next(newData);
   }
 
   get rate(): number {

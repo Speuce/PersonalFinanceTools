@@ -2,12 +2,13 @@
  *
  */
 import { Series } from '../helpers/graph-types';
+import { LineSeriesOption } from 'echarts';
 
 export const graphColor: string = '#FFBF00';
 /**
  * The default configuration of a series in the chart
  */
-export const seriesTemplate: Series = {
+export const seriesTemplate: LineSeriesOption = {
   name: '',
   data: [],
   type: 'line',
