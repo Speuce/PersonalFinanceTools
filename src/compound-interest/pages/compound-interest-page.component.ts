@@ -7,7 +7,18 @@ import { CalculatorService } from '../services/calculator.service';
     <h2>{{ principle }}</h2>
     <app-compound-interest-graph></app-compound-interest-graph>
     <div style="display: flex; flex-wrap: wrap; align-items: stretch">
-      <app-year-selector></app-year-selector>
+      <app-linear-slider-value
+        [min]="0.0"
+        [max]="1000000"
+        [step]="10000"
+        [textWidth]="150"
+        [value]="principle"
+        (valueChange)="principleChange($event)"
+        [instantUpdate]="false"
+        softMax
+        prefix="$"
+        title="Principle"
+      ></app-linear-slider-value>
       <app-linear-slider-value
         [min]="0.0"
         [max]="100.0"
@@ -19,18 +30,7 @@ import { CalculatorService } from '../services/calculator.service';
         title="Interest Rate"
         subtitle="Annual"
       ></app-linear-slider-value>
-      <app-linear-slider-value
-        [min]="0.0"
-        [max]="1000000"
-        [step]="10000"
-        [textWidth]="150"
-        [value]="principle"
-        (valueChange)="principleChange($event)"
-        softMax
-        prefix="$"
-        title="Principle"
-      ></app-linear-slider-value>
-
+      <app-year-selector></app-year-selector>
       <app-linear-slider-value
         [min]="0.0"
         [max]="100000"

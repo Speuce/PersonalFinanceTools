@@ -24,7 +24,7 @@ import { CalculatorService } from '../services/calculator.service';
         min="1"
         max="100"
         [value]="computeSliderValue(value)"
-        (input)="updateValue($event.value)"
+        (valueChange)="updateValue($event)"
         step="0.0001"
         [displayWith]="computeRoundedExponentialValue"
       ></mat-slider>

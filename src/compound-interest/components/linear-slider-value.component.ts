@@ -23,7 +23,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
               matInput
               type="number"
               [ngModel]="value"
-              (ngModelChange)="setValue($event)"
+              (ngModelChange)="setValue($event, false)"
               [min]="min"
               [max]="softMax !== undefined ? maxNum : max"
               [step]="arrowStep !== 0 ? arrowStep : step"
@@ -37,7 +37,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         [min]="min"
         [max]="max"
         [value]="value"
-        (valueChange)="setValue($event)"
+        (input)="setValue($event.value, true)"
+        (valueChange)="setValue($event, false)"
         [step]="step"
       ></mat-slider>
     </mat-card>
@@ -84,10 +85,21 @@ export class LinearSliderValueComponent {
 
   @Input() max: number = 100;
 
+  /**
+   * True if the user should be allowed to enter values in the
+   * textbox larger than the provided max.
+   */
   @Input() softMax: string | undefined;
 
+  /**
+   * The step of the slider
+   */
   @Input() step: number = 1;
 
+  /**
+   * The change in value every time the user clicks the
+   * arrow on the side of textbox (defaults to step's value)
+   */
   @Input() arrowStep: number = 0;
 
   @Input() prefix: string = '';
@@ -100,12 +112,31 @@ export class LinearSliderValueComponent {
 
   @Input() value: number | null = 5;
 
+  /**
+   * Whether to update the value as the user slides the slider (true)
+   * Or after the user stops sliding the slider (false).
+   */
+  @Input() instantUpdate: boolean = true;
+
   @Input() textWidth: number = 125;
 
   @Output() valueChange = new EventEmitter<number | null>();
 
-  setValue(newVal: number | null) {
-    this.value = newVal;
-    this.valueChange.emit(this.value);
+  /**
+   * Sets the value stored by this component
+   * @param newVal the new value
+   * @param instant whether or not this value is considered a
+   * 'instant' update
+   */
+  setValue(newVal: number | null, instant: boolean) {
+    if (instant) {
+      if (this.instantUpdate) {
+        this.value = newVal;
+        this.valueChange.emit(this.value);
+      }
+    } else {
+      this.value = newVal;
+      this.valueChange.emit(this.value);
+    }
   }
 }
