@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { TimeSelectorComponent } from './components/time-selector.component';
 import { CompoundInterestPageComponent } from './pages/compound-interest-page.component';
 import { CompoundInterestGraphComponent } from './components/compound-interest-graph.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
 import { LinearSliderValueComponent } from './components/linear-slider-value.component';
 
 @NgModule({

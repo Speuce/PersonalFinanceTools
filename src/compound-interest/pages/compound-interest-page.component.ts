@@ -57,8 +57,6 @@ export class CompoundInterestPageComponent implements OnInit {
   ngOnInit() {
     this.principle = this.calcService.principle;
     this.rate = this.calcService.rate;
-    // eslint-disable-next-line no-console
-    this.calcService.dataChange.subscribe((data) => console.log(data));
   }
 
   principleChange(val: number | null) {

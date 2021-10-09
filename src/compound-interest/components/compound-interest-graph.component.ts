@@ -78,5 +78,6 @@ export class CompoundInterestGraphComponent implements OnInit {
         this.chartInstance.setOption(this.chartOption);
       }
     });
+    this.calcService.recalculate();
   }
 }

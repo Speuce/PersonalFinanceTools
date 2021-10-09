@@ -16,9 +16,9 @@ export class CalculatorService {
   dataChange: Subject<number[]> = new Subject();
 
   constructor() {
-    this._principle = 0;
-    this._periods = 5;
-    this._rate = 0.05;
+    this._principle = 1000;
+    this._periods = 25;
+    this._rate = 3.0;
     this.dataChange.subscribe((value) => {
       this._data = value;
     });
